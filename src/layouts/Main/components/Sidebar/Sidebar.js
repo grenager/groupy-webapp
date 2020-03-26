@@ -3,16 +3,14 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import PeopleIcon from '@material-ui/icons/People';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-import ImageIcon from '@material-ui/icons/Image';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import SettingsIcon from '@material-ui/icons/Settings';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
+// icons
+import AccountIcon from '@material-ui/icons/AccountCircleRounded';
+import FamilyIcon from '@material-ui/icons/Group';
+import EditIcon from '@material-ui/icons/Edit';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import { Profile, SidebarNav, UpgradePlan } from './components';
+import { Profile, SidebarNav } from './components';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -44,45 +42,30 @@ const Sidebar = props => {
 
   const pages = [
     {
-      title: 'Dashboard',
+      title: 'View my profile',
       href: '/dashboard',
-      icon: <DashboardIcon />
+      icon: <AccountIcon />
     },
     {
-      title: 'Users',
+      title: 'View my family',
       href: '/users',
-      icon: <PeopleIcon />
-    },
-    {
-      title: 'Products',
-      href: '/products',
-      icon: <ShoppingBasketIcon />
-    },
-    {
-      title: 'Authentication',
-      href: '/sign-in',
-      icon: <LockOpenIcon />
+      icon: <FamilyIcon />
     },
     {
       title: 'Typography',
       href: '/typography',
-      icon: <TextFieldsIcon />
+      icon: <EditIcon />
     },
     {
-      title: 'Icons',
+      title: 'Edit my profile',
       href: '/icons',
-      icon: <ImageIcon />
+      icon: <NotificationsIcon />
     },
     {
-      title: 'Account',
+      title: 'Messages',
       href: '/account',
-      icon: <AccountBoxIcon />
+      icon: <ExitToAppIcon />
     },
-    {
-      title: 'Settings',
-      href: '/settings',
-      icon: <SettingsIcon />
-    }
   ];
 
   return (
@@ -103,7 +86,6 @@ const Sidebar = props => {
           className={classes.nav}
           pages={pages}
         />
-        <UpgradePlan />
       </div>
     </Drawer>
   );

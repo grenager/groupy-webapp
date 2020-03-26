@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import {
-  Gdrawer,
+  // Gdrawer,
   Home,
   Stuff,
 } from './components';
@@ -35,7 +35,7 @@ const Dashboard = () => {
         >
           <Paper
             className={classes.paper}
-          > <Gdrawer /> </Paper>
+          >{ /* <Gdrawer /> */ }xs=3</Paper>
         </Grid>
         <Grid
           item
