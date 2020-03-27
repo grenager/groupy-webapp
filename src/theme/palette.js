@@ -18,6 +18,12 @@ export default {
     main: colors.blue['A400'],
     light: colors.blue['A400']
   },
+  groupy_yellow: {
+    contrastText: white,
+    dark: colors.yellow[900],
+    main: colors.yellow['FDCC3E'],
+    light: colors.yellow['FDCC3E']
+  },
   success: {
     contrastText: white,
     dark: colors.green[900],
