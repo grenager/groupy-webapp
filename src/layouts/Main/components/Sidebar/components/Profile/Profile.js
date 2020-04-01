@@ -13,6 +13,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 
+let user = {};
 const token = process.env.REACT_APP_GROUPY_TOKEN;
 const cache = new InMemoryCache();
 
@@ -39,15 +40,25 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 client
   .query({
     query: gql`
-      query getMe {
-        me {
-          id
-          phone
-        }
+      query { user(id: "5e554d1d0ffd206a0a36d932" )
+      {
+        first
+        phone
+        last
       }
+    }
     `
   })
-  .then(result => console.log(result));
+  .then(result => {
+    // console.log(result)
+    // console.log(`first:${result.data.user[0].first}`);
+    user = {
+      first: result.data.user[0].first,
+      last: result.data.user[0].last,
+      phone: result.data.user[0].phone,
+    }
+    console.log('USER IS', user);
+  });
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -70,11 +81,11 @@ const Profile = props => {
 
   const classes = useStyles();
 
-  const user = {
-    name: 'Teg Grenager',
-    avatar: '/images/avatars/avatar_11.png',
-    bio: '94942'
-  };
+  // const user = {
+  //   name: 'Teg Grenager',
+  //   avatar: '/images/avatars/avatar_11.png',
+  //   bio: '94942'
+  // };
 
   return (
     <div
@@ -92,7 +103,7 @@ const Profile = props => {
         className={classes.name}
         variant="h4"
       >
-        {user.name}
+        {name}
       </Typography>
       <Typography variant="body2">{user.bio}</Typography>
     </div>
