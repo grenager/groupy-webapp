@@ -1,9 +1,53 @@
+/* eslint no-undef: 0 */
+
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
+// Apollo
+import { setContext } from 'apollo-link-context';
+import { createHttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
+
+const token = process.env.REACT_APP_GROUPY_TOKEN;
+const cache = new InMemoryCache();
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000/graphql',
+  credentials: 'same-origin'
+});
+
+const authLink = setContext((_, { headers }) => {
+  // const token = localStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    }
+  }
+});
+
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache,
+  link: authLink.concat(httpLink),
+});
+
+client
+  .query({
+    query: gql`
+      query getMe {
+        me {
+          id
+          phone
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
 
 const useStyles = makeStyles(theme => ({
   root: {
