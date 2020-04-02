@@ -9,9 +9,12 @@ import { Avatar, Typography } from '@material-ui/core';
 // Apollo
 import { setContext } from 'apollo-link-context';
 import { createHttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from 'apollo-boost';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
+import * as queries from '../../../../../../graphql/queries';
+
+const userQuery = gql(queries.users.getUser.graphql);
 
 let user = {};
 const token = process.env.REACT_APP_GROUPY_TOKEN;
@@ -39,15 +42,7 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 
 client
   .query({
-    query: gql`
-      query { user(id: "5e554d1d0ffd206a0a36d932" )
-      {
-        first
-        phone
-        last
-      }
-    }
-    `
+    query: userQuery
   })
   .then(result => {
     // console.log(result)
@@ -82,7 +77,7 @@ const Profile = props => {
   const classes = useStyles();
 
   // const user = {
-  //   name: 'Teg Grenager',
+  //   name: 'Joe Schmoe',
   //   avatar: '/images/avatars/avatar_11.png',
   //   bio: '94942'
   // };
@@ -103,7 +98,7 @@ const Profile = props => {
         className={classes.name}
         variant="h4"
       >
-        {name}
+        {user.name}
       </Typography>
       <Typography variant="body2">{user.bio}</Typography>
     </div>
