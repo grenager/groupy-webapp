@@ -17,12 +17,8 @@ import { UpcomingEvents as UpcomingEventsView } from './views';
 import { Messages as MessagesView } from './views';
 import { JoinGroup as JoinGroupView } from './views';
 import { Welcome as WelcomeView } from './views';
-// requirements for cookies
-import Cookies from 'universal-cookie';
-// import axios from 'axios';
 
-const cookies = new Cookies();
-const cookieExists = cookies.get('groupy')
+import cookieExists from './lib/cookieExists';
 
 class App extends Component {
   render() {

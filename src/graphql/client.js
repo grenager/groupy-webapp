@@ -4,6 +4,7 @@
 // import { gql } from 'apollo-boost';
 // import * as queries from './graphql/queries';
 import Cookies from 'universal-cookie';
+
 // Apollo
 import {
   ApolloClient,
@@ -12,17 +13,15 @@ import {
   ApolloLink
 } from 'apollo-boost';
 
-
 // Set variables via cookie
 const cookies = new Cookies();
-const cookieExists = cookies.get('groupy');
-
+const groupyCookie = cookies.get('groupy');
 var token = 'undefined';
 var userID = 'undefined';
 
-if (cookieExists) {
-  token = cookieExists.token;
-  userID = cookieExists.userID;
+if (groupyCookie) {
+  token = groupyCookie.token;
+  userID = groupyCookie.userID;
 } else {
   console.log('Impossible situation. You have no cookie and that means the\
     welcome view should prompt you to set up your profile');

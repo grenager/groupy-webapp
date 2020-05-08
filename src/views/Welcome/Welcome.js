@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
-// requirements for cookies
+import cookieExists from '../../lib/cookieExists';
+
+// requirements to set cookie
 import Cookies from 'universal-cookie';
-import axios from 'axios';
 const cookies = new Cookies();
-const cookieExists = cookies.get('groupy');
+
+import axios from 'axios';
 const server = process.env.REACT_APP_GROUPY_GRAPHQL_SERVER;
 const port = process.env.REACT_APP_PORTNUM;
 let transferProtocol = 'https';
