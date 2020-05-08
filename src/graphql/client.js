@@ -16,6 +16,7 @@ import {
 // Set variables via cookie
 const cookies = new Cookies();
 const groupyCookie = cookies.get('groupy');
+console.log('groupy cookie is', groupyCookie);
 var token = 'undefined';
 var userID = 'undefined';
 

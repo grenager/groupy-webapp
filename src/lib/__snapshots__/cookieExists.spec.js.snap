@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proper cookie data is correct 1`] = `
+Object {
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTYyYWRlMTUwMTRiNTQ0YTUwYWY5NDMiLCJpYXQiOjE1ODg3OTc5MTh9.ikGhUB9-TWq7IidKEg76FVFeuxsKIzGJ10BjexCQL9Q",
+  "userID": "5e62ade15014b544a50af943",
+}
+`;
